@@ -1,38 +1,131 @@
-.App {
+body {
+  font-family: Arial, sans-serif;
+  /* background: url(http://www.shukatsu-note.com/wp-content/uploads/2014/12/computccooooer-564136_1280.jpg) no-repeat; */
+  background-color:#5A5A5A; 
+  background-size: cover;
+  height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  font-family: Tahoma, Arial, sans-serif;
+  color: #06D85F;
+  margin: 80px 0;
+}
+
+.box {
+  width: 40%;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.2);
+  padding: 35px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.button {
+  font-size: 1em;
+  padding: 10px;
+  color: #fff;
+  border: 2px solid #06D85F;
+  border-radius: 20px/50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.button:hover {
+  background: #06D85F;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 60%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.all-content {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
+}
+.question {
+  margin-top: 28px;
+}
+.popup h2 {
+  color:  #191A1A;;
+  font-family: SF Pro Display, sans-serif;
+  font-weight: 500;
+  text-align: center;
+}
+.popup .close {
+  position: absolute;
+  right: 16px;
+top: 16px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  width: 70%;
+  display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+}
+#answer {
+  background: rgba(212, 126, 54, 0.02);
+border: 1px solid rgba(210, 120, 45, 0.45);
+box-sizing: border-box;
+border-radius: 10px;
+height: 150px;
+width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+button {
+  width: 148px;
+height: 48px;
+left: calc(50% - 152px/2 + 0.5px);
+bottom: 22px;
+
+background: #D47E36;
+border-radius: 7px;
+color: #FFFFFF;
+margin-top: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
   }
-  to {
-    transform: rotate(360deg);
+  .popup{
+    width: 70%;
   }
 }
