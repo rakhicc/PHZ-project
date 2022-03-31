@@ -12,13 +12,23 @@ import { ReactComponent as Emoji8 } from "../assets/Emoji8.svg";
 import { ReactComponent as Emoji9 } from "../assets/Emoji9.svg";
 import { ReactComponent as Emoji10 } from "../assets/Emoji10.svg";
 
-const OverLay = () => {
+const OverLay = ({ submit }) => {
   const [number, setNumber] = useState(0);
   const [answer, setAnswer] = useState("");
 
   const answerHandler = (e) => {
     e.preventDefault();
     setAnswer(e.target.value);
+  };
+
+  const questionnaireSubmit = (e) => {
+    e.preventDefault();
+
+    const questionAnswers = {
+      number,
+      answer,
+    };
+    submit(questionAnswers);
   };
 
   return (
@@ -35,7 +45,6 @@ const OverLay = () => {
             </h2>
             <h2>(1 = Not Likely, 10 = Very Likely)</h2>
           </div>
-          {console.log(number + answer)}
           <div class="content">
             <Emoji1 onClick={() => setNumber(1)} />
             <Emoji2 onClick={() => setNumber(2)} />
@@ -54,7 +63,7 @@ const OverLay = () => {
             <input type="text" id="answer" onChange={answerHandler}></input>
           </div>
 
-          <Button>Submit</Button>
+          <Button submit={questionnaireSubmit}>Submit</Button>
         </div>
       </div>
     </div>
