@@ -1,38 +1,88 @@
-.App {
+body {
+  font-family: SF Pro Display, sans-serif;
+  background-color:#5A5A5A; 
+  background-size: cover;
+  height: 100vh;
+}
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 60%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.all-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.question {
+  margin-top: 28px;
+}
+.popup h2 {
+  color:  #191A1A;;
+  font-family: SF Pro Display, sans-serif;
+  font-weight: 500;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.popup .close {
+  position: absolute;
+  right: 16px;
+top: 16px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.popup .close:hover {
+  color: #06D85F;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.popup .content {
+  width: 70%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+}
+#answer {
+  background: rgba(212, 126, 54, 0.02);
+border: 1px solid rgba(210, 120, 45, 0.45);
+box-sizing: border-box;
+border-radius: 10px;
+height: 150px;
+width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
   }
-  to {
-    transform: rotate(360deg);
+  .popup{
+    width: 70%;
   }
 }

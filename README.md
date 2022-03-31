@@ -1,76 +1,144 @@
+# PHZ questionnaire project questionnaire widget
 
-# PHZ Project
+## 1. Project Description
 
-# Getting Started with Create React App for PHZ project
+Business College Helsinki school project with PHZ Full Stack. Embeddable questionnaire widget with React and CSS.
 
+### 1.1. Business Vision
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To make simple widget to be embedded easily to different webpages.
 
-## Available Scripts
+### 1.2. Task Management
 
-In the project directory, you can run:
+- Jira
+- Slack
+- Teams
+- GitHub
 
-### `npm start`
+### 1.3. Personas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Mahalete Haile @Mahalete
+- Rakhi Chirayil Chandran @rakhicc
+- Trang Nguyen @nguyenminhtrang2206
+- Maria Rosenholm @MariaRosenholm
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 1.4. Use Cases
 
-### `npm test`
+Promoter score collection for HR personelle in PHZ Full Stack.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1.5. Non-Functional Requirements
 
-### `npm run build`
+https://wiki.phz.fi/NonFunctionalRequirements
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 2. Architecture
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2.1. Technologies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Coding languages/frameworks/testing
 
-### `npm run eject`
+- React
+- CSS
+- Jest
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Dev
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Docker
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+CI
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Jenkins
 
-## Learn More
+Production
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- GitHub pages
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 2.2. Naming, Terms and Key Concepts
 
-### Code Splitting
+.env should be in the root and have fields named as follows:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 2.3. Coding Convention
 
-### Analyzing the Bundle Size
+PLEASE TRANG UPDATE THIS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 2.4. Development Guide
 
-### Making a Progressive Web App
+Add here examples and hints of good ways how to code the project. Convert the silent knowledge as tacit knowledge here.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- See https://en.wikipedia.org/wiki/Knowledge_management
 
-### Advanced Configuration
+## 3. Development Environment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 3.1. Prerequisites
 
-### Deployment
+### 3.2. Start the Application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+After pulling the newest code from Git.
 
-### `npm run build` fails to minify
+- npm install
+- make sure you have .env file with correct information in the
+- npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 3.3. Access the Application
 
-### added MIT license
+### 3.4. Run Tests
+
+- npm test
+
+### 3.5. IDE Setup and Debugging
+
+### 3.6. Version Control
+
+### 3.7. Continuous Integration
+
+## 4. Staging Environment
+
+### 4.1. Access
+
+### 4.2. Deployment
+
+### 4.3. Smoke Tests
+
+#### 4.3.1. Automated Test Cases
+
+#### 4.3.2. Manual Test Cases
+
+### 4.4. Rollback
+
+### 4.5. Logs
+
+### 4.6. Monitoring
+
+## 5. Production Environment
+
+### 5.1. Access
+
+### 5.2. Deployment
+
+### 5.3. Smoke Tests
+
+#### 5.3.1. Automated Test Cases
+
+#### 5.3.2. Manual Test Cases
+
+### 5.4. Rollback
+
+### 5.5. Logs
+
+### 5.6. Monitoring
+
+## 6. Operating Manual
+
+### 6.1 Scheduled Jobs
+
+### 6.2 Manual Processes
+
+## 7. Problems
+
+### 7.1. Environments
+
+### 7.2. Coding
+
+### 7.3. Dependencies
+
+Add here TODO and blockers that you have found related to upgrading to newer versions.
+List the library/framework/service, version, and then the error message.
