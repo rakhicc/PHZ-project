@@ -1,5 +1,19 @@
 module.exports = {                     
-  "allowedPackages": [],
+  "allowedPackages": [
+    {
+      "name": "axe-core@4.4.1",
+      "reason": "we need this to run the package"
+    },
+
+   {
+    "name": "language-subtag-registry@0.3.21",
+    "reason": "fjjf" 
+   },
+    {
+    "name": "argparse@2.0.1",
+    "reason": "fjjf" 
+    }
+  ],
   "disallowedPackages": [],
   "allowedLicenses": [
     "MIT",
@@ -22,7 +36,9 @@ module.exports = {
     "AFL",
     "(MIT AND CC-BY-3.0)",
     "Unlicense",
-    "OFL-1.1 AND MIT"
+    "OFL-1.1 AND MIT",
+    "0BSD",
+    "CC0-1.0"
   ],
   strictMode: true,
   ignoreDevDependencies: true,
