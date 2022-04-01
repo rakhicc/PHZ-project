@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from "../UI/Button";
+import styles from './OverLay.module.css'
 import { ReactComponent as Close } from "../assets/close-square.svg";
 import { ReactComponent as Emoji1 } from "../assets/Emoji1.svg";
 import { ReactComponent as Emoji2 } from "../assets/Emoji2.svg";
@@ -32,20 +33,20 @@ const OverLay = ({ submit }) => {
   };
 
   return (
-    <div id="popup1" class="overlay">
-      <div class="popup">
-        <a class="close" href="#">
+    <div id="popup1" class={styles.overlay}>
+      <div class={styles.popup}>
+        <a class={styles.close} href="#">
           <Close />
         </a>
 
-        <div className="all-content">
-          <div className="question">
+        <div className={styles.allContent}>
+          <div className={styles.question}>
             <h2>
               How likely are you to recommend us to a friend or colleague?
             </h2>
             <h2>(1 = Not Likely, 10 = Very Likely)</h2>
           </div>
-          <div class="content">
+          <div class={styles.content}>
             <Emoji1 onClick={() => setNumber(1)} />
             <Emoji2 onClick={() => setNumber(2)} />
             <Emoji3 onClick={() => setNumber(3)} />
@@ -58,9 +59,9 @@ const OverLay = ({ submit }) => {
             <Emoji10 onClick={() => setNumber(10)} />
           </div>
 
-          <div className="question">
+          <div className={styles.question}>
             <h2>Please provide any comments to help explain your selection.</h2>
-            <input type="text" id="answer" onChange={answerHandler}></input>
+            <input type="text" id="answer" className={styles.answer} onChange={answerHandler}></input>
           </div>
 
           <Button submit={questionnaireSubmit}>Submit</Button>
