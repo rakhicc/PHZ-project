@@ -49,11 +49,19 @@
     text-decoration: none;
     color: #333;
   }
-  .popup .close:hover {
-    color: #06D85F;
+  .emoji {
+    cursor: pointer;
+    width: 100%;
+	height: auto;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+  }
+
+  .emoji:hover {
+    width:80%;
   }
  .content {
-     width: 80%;
+     width: 70%;
      display: flex;
      flex-direction: row;
      align-items: center;
