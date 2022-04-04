@@ -49,7 +49,7 @@
     text-decoration: none;
     color: #333;
   }
-  .emoji {
+  .emoji{
     cursor: pointer;
     width: 100%;
 	height: auto;
@@ -57,6 +57,22 @@
 	transition: .3s ease-in-out;
   }
 
+  li {
+    list-style: none;
+  }
+  
+ 
+  
+  .active {
+    background: #EBC19D;
+    border-radius: 10%;
+  }
+  
+
+  /* .active {
+    width: 80%;
+    height: 80%;
+  } */
   .emoji:hover {
     width:80%;
   }
