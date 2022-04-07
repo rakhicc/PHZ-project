@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from "../UI/Button";
+import styles from './OverLay.module.css'
 import { ReactComponent as Close } from "../assets/close-square.svg";
 import { ReactComponent as Emoji1 } from "../assets/Emoji1.svg";
 import { ReactComponent as Emoji2 } from "../assets/Emoji2.svg";
@@ -12,9 +13,48 @@ import { ReactComponent as Emoji8 } from "../assets/Emoji8.svg";
 import { ReactComponent as Emoji9 } from "../assets/Emoji9.svg";
 import { ReactComponent as Emoji10 } from "../assets/Emoji10.svg";
 
+
+function Select({ user, click, status }) {
+  return (
+    <li className={status ? styles.active : null} onClick={click}>
+      {user}{" "}
+    </li>
+  );
+}
+
+
+
+
+
+
 const OverLay = ({ submit }) => {
+
+  const scores = [
+  <Emoji1 className={styles.emoji} onClick={() => setNumber(1)} />, 
+  <Emoji2 className={styles.emoji} onClick={() => setNumber(2)}/>,
+  <Emoji3 className={styles.emoji} onClick={() => setNumber(3)}/>,
+  <Emoji4 className={styles.emoji} onClick={() => setNumber(4)}/>,
+  <Emoji5 className={styles.emoji} onClick={() => setNumber(5)}/>,
+  <Emoji6 className={styles.emoji} onClick={() => setNumber(6)}/>,
+  <Emoji7 className={styles.emoji} onClick={() => setNumber(7)}/>,
+  <Emoji8 className={styles.emoji} onClick={() => setNumber(8)}/>,
+  <Emoji9 className={styles.emoji} onClick={() => setNumber(9)}/>,
+  <Emoji10 className={styles.emoji} onClick={() => setNumber(10)}/>,];
   const [number, setNumber] = useState(0);
   const [answer, setAnswer] = useState("");
+  // const [isActive, setActive] =useState(false);
+
+  // const handleToggle = () => {
+  
+  //   setActive(!isActive);  
+   
+  // };
+  const [select, setSelect] = useState(false);
+
+  const handleSelect = key => {
+    setSelect(key);
+  };
+
 
   const answerHandler = (e) => {
     e.preventDefault();
@@ -32,35 +72,51 @@ const OverLay = ({ submit }) => {
   };
 
   return (
-    <div id="popup1" class="overlay">
-      <div class="popup">
-        <a class="close" href="#">
+    <div id="popup1" class={styles.overlay}>
+      <div className={styles.popup}>
+        <a className={styles.close} href="#">
           <Close />
         </a>
 
-        <div className="all-content">
-          <div className="question">
+        <div className={styles.allContent}>
+          <div className={styles.question}>
             <h2>
               How likely are you to recommend us to a friend or colleague?
             </h2>
             <h2>(1 = Not Likely, 10 = Very Likely)</h2>
           </div>
-          <div class="content">
-            <Emoji1 onClick={() => setNumber(1)} />
-            <Emoji2 onClick={() => setNumber(2)} />
-            <Emoji3 onClick={() => setNumber(3)} />
-            <Emoji4 onClick={() => setNumber(4)} />
-            <Emoji5 onClick={() => setNumber(5)} />
-            <Emoji6 onClick={() => setNumber(6)} />
-            <Emoji7 onClick={() => setNumber(7)} />
-            <Emoji8 onClick={() => setNumber(8)} />
-            <Emoji9 onClick={() => setNumber(9)} />
-            <Emoji10 onClick={() => setNumber(10)} />
+          <div className={styles.content}>
+          {scores.map((score, key) => (
+        <Select
+          key={key}
+        
+          status={select === key}
+          
+          click={() => handleSelect(key)}
+          
+          user={score}
+        />
+      ))}
+
+          {/* <Emoji1  className={isActive ? styles.active :  styles.emoji} onClick= {handleToggle}   />
+      
+         
+            <Emoji1 className={styles.emoji} onClick={() => setNumber(1)} />
+            <Emoji2 className={styles.emoji} onClick={() => setNumber(2)} />
+            <Emoji3 className={styles.emoji} onClick={() => setNumber(3)} />
+            <Emoji4 className={styles.emoji} onClick={() => setNumber(4)} />
+            <Emoji5 className={styles.emoji} onClick={() => setNumber(5)} />
+            <Emoji6 className={styles.emoji} onClick={() => setNumber(6)} />
+            <Emoji7 className={styles.emoji} onClick={() => setNumber(7)} />
+            <Emoji8 className={styles.emoji} onClick={() => setNumber(8)} />
+            <Emoji9 className={styles.emoji} onClick={() => setNumber(9)} />
+            <Emoji10 className={styles.emoji} onClick={() => setNumber(10)} /> */}
+
           </div>
 
-          <div className="question">
+          <div className={styles.question}>
             <h2>Please provide any comments to help explain your selection.</h2>
-            <input type="text" id="answer" onChange={answerHandler}></input>
+            <input type="text" id="answer" className={styles.answer} onChange={answerHandler}></input>
           </div>
 
           <Button submit={questionnaireSubmit}>Submit</Button>
