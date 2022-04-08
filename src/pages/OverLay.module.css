@@ -113,20 +113,20 @@
       font-size: large;
     }
     .content {
-      width: 75%;
+      width: 85%;
     }
   }
 
   @media screen and (max-width: 812px){
     .content {
-      width: 80%;
+      width: 90%;
     }
     .popup h2 {
       font-size: medium;
     }
   }
 
-  @media screen and (max-width: 580px){
+  @media screen and (max-width: 600px){
     .content {
       display: grid;
       grid-gap: 10px;
