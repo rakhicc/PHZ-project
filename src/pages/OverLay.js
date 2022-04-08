@@ -21,12 +21,6 @@ function Select({ user, click, status }) {
     </li>
   );
 }
-
-
-
-
-
-
 const OverLay = ({ submit }) => {
 
   const scores = [
@@ -39,7 +33,8 @@ const OverLay = ({ submit }) => {
   <Emoji7 className={styles.emoji} onClick={() => setNumber(7)}/>,
   <Emoji8 className={styles.emoji} onClick={() => setNumber(8)}/>,
   <Emoji9 className={styles.emoji} onClick={() => setNumber(9)}/>,
-  <Emoji10 className={styles.emoji} onClick={() => setNumber(10)}/>,];
+  <Emoji10 className={styles.emoji} onClick={() => setNumber(10)}/>];
+
   const [number, setNumber] = useState(0);
   const [answer, setAnswer] = useState("");
   // const [isActive, setActive] =useState(false);
