@@ -62,7 +62,7 @@ const OverLay = ({ submit }) => {
   return (
     <div id="popup1" class={styles.overlay}>
       <div className={styles.popup}>
-        <a className={styles.close} href="#">
+        <a className={styles.close} href="/">
           <Close />
         </a>
 
