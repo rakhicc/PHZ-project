@@ -37,13 +37,6 @@ const OverLay = ({ submit }) => {
 
   const [number, setNumber] = useState(0);
   const [answer, setAnswer] = useState("");
-  // const [isActive, setActive] =useState(false);
-
-  // const handleToggle = () => {
-  
-  //   setActive(!isActive);  
-   
-  // };
   const [select, setSelect] = useState(false);
 
   const handleSelect = key => {
@@ -92,20 +85,6 @@ const OverLay = ({ submit }) => {
           user={score}
         />
       ))}
-
-          {/* <Emoji1  className={isActive ? styles.active :  styles.emoji} onClick= {handleToggle}   />
-      
-         
-            <Emoji1 className={styles.emoji} onClick={() => setNumber(1)} />
-            <Emoji2 className={styles.emoji} onClick={() => setNumber(2)} />
-            <Emoji3 className={styles.emoji} onClick={() => setNumber(3)} />
-            <Emoji4 className={styles.emoji} onClick={() => setNumber(4)} />
-            <Emoji5 className={styles.emoji} onClick={() => setNumber(5)} />
-            <Emoji6 className={styles.emoji} onClick={() => setNumber(6)} />
-            <Emoji7 className={styles.emoji} onClick={() => setNumber(7)} />
-            <Emoji8 className={styles.emoji} onClick={() => setNumber(8)} />
-            <Emoji9 className={styles.emoji} onClick={() => setNumber(9)} />
-            <Emoji10 className={styles.emoji} onClick={() => setNumber(10)} /> */}
 
           </div>
 
