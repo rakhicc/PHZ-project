@@ -90,7 +90,7 @@ const OverLay = ({ submit }) => {
 
           <div className={styles.question}>
             <h2>Please provide any comments to help explain your selection.</h2>
-            <input type="text" id="answer" className={styles.answer} onChange={answerHandler}></input>
+            <textarea type="text" id="answer" className={styles.answer} onChange={answerHandler}></textarea>
           </div>
 
           <Button submit={questionnaireSubmit}>Submit</Button>
