@@ -13,8 +13,6 @@ function App() {
       ? (date = new Date().toISOString().substring(0, 9))
       : (date = new Date().toISOString().substring(0, 10));
 
-    console.log(date);
-
     const dataForBackend = {
       employeeid: Math.floor(Math.random() * 500),
       date: date,
