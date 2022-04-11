@@ -1,6 +1,7 @@
 import "./App.css";
 import LandingPage from "./pages/LandingPage";
 import OverLay from "./pages/OverLay";
+import AfterSubmit from "./pages/AfterSubmit";
 import { useState } from "react";
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
     <div className="App">
       {!submitted && <LandingPage />}
       {!submitted && <OverLay submit={submitHandler} />}
-      {submitted && <h1>Make a new component here!</h1>}
+      {submitted && <AfterSubmit />}
     </div>
   );
 }
