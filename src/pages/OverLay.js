@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../UI/Button";
-import styles from './OverLay.module.css'
+import styles from './OverLay.module.css';
 import { ReactComponent as Close } from "../assets/close-square.svg";
 import { ReactComponent as Emoji1 } from "../assets/Emoji1.svg";
 import { ReactComponent as Emoji2 } from "../assets/Emoji2.svg";
@@ -60,7 +60,7 @@ const OverLay = ({ submit }) => {
   };
 
   return (
-    <div id="popup1" class={styles.overlay}>
+    <div id="popup1" className={styles.overlay}>
       <div className={styles.popup}>
         <a className={styles.close} href="/">
           <Close />
