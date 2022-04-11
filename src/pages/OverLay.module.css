@@ -99,11 +99,13 @@
     box-shadow: 0 0 3px rgba(210, 120, 45, 0.45) !important;
     -moz-box-shadow: 0 0 3px rgba(210, 120, 45, 0.45) !important;
     -webkit-box-shadow: 0 0 3px rgba(210, 120, 45, 0.45) !important;
-    }
-    
-    textarea:focus {
     outline-offset: 0px !important;
     outline: none !important;
+    }
+    
+    textarea {
+      font-family: inherit;
+      font-size: inherit;
     }
   
  
