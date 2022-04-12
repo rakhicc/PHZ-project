@@ -13,36 +13,76 @@ import { ReactComponent as Emoji8 } from "../assets/Emoji8.svg";
 import { ReactComponent as Emoji9 } from "../assets/Emoji9.svg";
 import { ReactComponent as Emoji10 } from "../assets/Emoji10.svg";
 
-
-function Select({ user, click, status }) {
-  return (
-    <li className={status ? styles.active : null} onClick={click}>
-      {user}{" "}
-    </li>
-  );
-}
 const OverLay = ({ submit }) => {
 
+  function Select({ user, click, status }) {
+    return (
+      <li className={status ? styles.active : null} onClick={click}>
+        {user}{" "}
+      </li>
+    );
+  }
+
   const scores = [
-  <Emoji1 className={styles.emoji} onClick={() => setNumber(1)} />, 
-  <Emoji2 className={styles.emoji} onClick={() => setNumber(2)}/>,
-  <Emoji3 className={styles.emoji} onClick={() => setNumber(3)}/>,
-  <Emoji4 className={styles.emoji} onClick={() => setNumber(4)}/>,
-  <Emoji5 className={styles.emoji} onClick={() => setNumber(5)}/>,
-  <Emoji6 className={styles.emoji} onClick={() => setNumber(6)}/>,
-  <Emoji7 className={styles.emoji} onClick={() => setNumber(7)}/>,
-  <Emoji8 className={styles.emoji} onClick={() => setNumber(8)}/>,
-  <Emoji9 className={styles.emoji} onClick={() => setNumber(9)}/>,
-  <Emoji10 className={styles.emoji} onClick={() => setNumber(10)}/>];
+    <Emoji1
+      data-testid="icon"
+      className={styles.emoji}
+      onClick={() => setNumber(1)}
+    />,
+    <Emoji2
+      data-testid="icon"
+      className={styles.emoji}
+      onClick={() => setNumber(2)}
+    />,
+    <Emoji3
+      data-testid="icon"
+      className={styles.emoji}
+      onClick={() => setNumber(3)}
+    />,
+    <Emoji4
+      data-testid="icon"
+      className={styles.emoji}
+      onClick={() => setNumber(4)}
+    />,
+    <Emoji5
+      data-testid="icon"
+      className={styles.emoji}
+      onClick={() => setNumber(5)}
+    />,
+    <Emoji6
+      data-testid="icon"
+      className={styles.emoji}
+      onClick={() => setNumber(6)}
+    />,
+    <Emoji7
+      data-testid="icon"
+      className={styles.emoji}
+      onClick={() => setNumber(7)}
+    />,
+    <Emoji8
+      data-testid="icon"
+      className={styles.emoji}
+      onClick={() => setNumber(8)}
+    />,
+    <Emoji9
+      data-testid="icon"
+      className={styles.emoji}
+      onClick={() => setNumber(9)}
+    />,
+    <Emoji10
+      data-testid="icon"
+      className={styles.emoji}
+      onClick={() => setNumber(10)}
+    />,
+  ];
 
   const [number, setNumber] = useState(0);
   const [answer, setAnswer] = useState("");
   const [select, setSelect] = useState(false);
 
-  const handleSelect = key => {
+  const handleSelect = (key) => {
     setSelect(key);
   };
-
 
   const answerHandler = (e) => {
     e.preventDefault();
@@ -62,11 +102,11 @@ const OverLay = ({ submit }) => {
   return (
     <div id="popup1" className={styles.overlay}>
       <div className={styles.popup}>
-        <a className={styles.close} href="/">
+        <a data-testid="close" className={styles.close} href="/">
           <Close />
         </a>
 
-        <div className={styles.allContent}>
+        <div data-testid="allContent" className={styles.allContent}>
           <div className={styles.question}>
             <h2>
               How likely are you to recommend us to a friend or colleague?
@@ -74,23 +114,26 @@ const OverLay = ({ submit }) => {
             <h2>(1 = Not Likely, 10 = Very Likely)</h2>
           </div>
           <div className={styles.content}>
-          {scores.map((score, key) => (
-        <Select
-          key={key}
-        
-          status={select === key}
-          
-          click={() => handleSelect(key)}
-          
-          user={score}
-        />
-      ))}
-
+            {scores.map((score, key) => (
+              <Select
+                key={key}
+                status={select === key}
+                click={() => handleSelect(key)}
+                user={score}
+              />
+            ))}
           </div>
 
           <div className={styles.question}>
             <h2>Please provide any comments to help explain your selection.</h2>
-            <textarea type="text" id="answer" className={styles.answer} onChange={answerHandler}></textarea>
+            <input
+              type="text"
+              id="answer"
+              data-testid="answer"
+              className={styles.answer}
+              onChange={answerHandler}
+            ></input>
+
           </div>
 
           <Button submit={questionnaireSubmit}>Submit</Button>
