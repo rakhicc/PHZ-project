@@ -18,9 +18,11 @@ test("There is Icons, inputbox, close button and the headings on the page.", () 
 
   const closeButton = screen.getByTestId("close");
   expect(closeButton).toBeInTheDocument();
+  expect(closeButton).toHaveAttribute("href", "/");
 
   const submitButton = screen.getByRole("button", { name: "Submit" });
   expect(submitButton).toBeInTheDocument();
+  expect(submitButton).toHaveTextContent("Submit");
 
   const allContent = screen.getByTestId("allContent");
 

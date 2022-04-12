@@ -6,6 +6,7 @@ import { useState } from "react";
 
 function App() {
   const [submitted, setSubmitted] = useState(false);
+  const [message, setMessage] = useState("");
 
   const submitHandler = (questionAnswers) => {
     let date;
@@ -26,16 +27,20 @@ function App() {
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(dataForBackend),
     })
-      .then((result) => console.log("Working: " + result))
-      .catch((error) => console.log("Not working: " + error));
+      .then(() => setMessage("Thank you for submiting you feedback!"))
+      .catch(() =>
+        setMessage(
+          "We weren't able to submit your answer. Please try again later!"
+        )
+      );
     setSubmitted(true);
   };
 
   return (
-    <div className="App">
+    <div data-testid="App" className="App">
       {!submitted && <LandingPage />}
       {!submitted && <OverLay submit={submitHandler} />}
-      {submitted && <AfterSubmit />}
+      {submitted && <AfterSubmit message={message} />}
     </div>
   );
 }
