@@ -92,25 +92,43 @@
   width: 100%;
   }
 
+
+  
+  textarea:focus {
+    border: 1px solid rgba(210, 120, 45, 0.45) !important;
+    box-shadow: 0 0 3px rgba(210, 120, 45, 0.45) !important;
+    -moz-box-shadow: 0 0 3px rgba(210, 120, 45, 0.45) !important;
+    -webkit-box-shadow: 0 0 3px rgba(210, 120, 45, 0.45) !important;
+    outline-offset: 0px !important;
+    outline: none !important;
+    }
+    
+    textarea {
+      font-family: inherit;
+      font-size: inherit;
+    }
+  
+ 
+
   @media screen and (max-width: 1068px){
     .popup h2 {
       font-size: large;
     }
     .content {
-      width: 75%;
+      width: 85%;
     }
   }
 
   @media screen and (max-width: 812px){
     .content {
-      width: 80%;
+      width: 90%;
     }
     .popup h2 {
       font-size: medium;
     }
   }
 
-  @media screen and (max-width: 580px){
+  @media screen and (max-width: 600px){
     .content {
       display: grid;
       grid-gap: 10px;
