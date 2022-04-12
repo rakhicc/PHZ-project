@@ -25,6 +25,9 @@ test("If submitted there is a AfterSubmit", async () => {
   render(<App />);
 
   const submitButton = screen.getByRole("button", { name: "Submit" });
+  const scoreIcons = screen.getAllByTestId("icon");
+
+  await fireEvent.click(scoreIcons[0]);
   await fireEvent.click(submitButton);
 
   const Aftersubmit = screen.getByTestId("AfterSubmit");
