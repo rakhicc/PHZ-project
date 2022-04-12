@@ -91,11 +91,17 @@ const OverLay = ({ submit }) => {
   const questionnaireSubmit = (e) => {
     e.preventDefault();
 
-    const questionAnswers = {
-      number,
-      answer,
-    };
-    submit(questionAnswers);
+    if(number === 0) {
+      alert("Please choose one number input")
+    } else {
+      const questionAnswers = {
+        number,
+        answer,
+      };
+      submit(questionAnswers);
+    }
+    
+    
   };
 
   return (
@@ -125,13 +131,13 @@ const OverLay = ({ submit }) => {
 
           <div className={styles.question}>
             <h2>Please provide any comments to help explain your selection.</h2>
-            <input
+            <textarea
               type="text"
               id="answer"
               data-testid="answer"
               className={styles.answer}
               onChange={answerHandler}
-            ></input>
+            ></textarea>
           </div>
 
           <Button submit={questionnaireSubmit}>Submit</Button>
