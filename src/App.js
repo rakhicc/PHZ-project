@@ -16,7 +16,7 @@ function App() {
       : (date = new Date().toISOString().substring(0, 10));
 
     const dataForBackend = {
-      employeeid: Math.floor(Math.random() * 500),
+      id: Math.floor(Math.random() * 500),
       date: date,
       score: questionAnswers.number,
       feedback: questionAnswers.answer,
