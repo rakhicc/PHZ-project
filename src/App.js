@@ -22,7 +22,7 @@ function App() {
       feedback: questionAnswers.answer,
     };
 
-    fetch("http://localhost:3010/api/npsdata", {
+    fetch(process.env.REACT_APP_URL, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(dataForBackend),
