@@ -33,6 +33,7 @@
   align-items: center;
   flex-direction: column;
 }
+
 .question {
   margin-top: 28px;
   width: 80%;
