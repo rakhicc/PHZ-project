@@ -3,17 +3,15 @@ import LandingPage from "./pages/LandingPage";
 import OverLay from "./pages/OverLay";
 import AfterSubmit from "./pages/AfterSubmit";
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [display, setDisplay] = useState("show");
-  const [submitted, setSubmitted] = useState(false);
+  const [displayOverlay, setDisplayOverlay] = useState();
   const [message, setMessage] = useState("");
 
-  // IF YOU WANT TO TAKE OF THE RESTRICTION OF SENDING MULTIPLE ANSWERS COMMENT THIS OUT
-  useEffect(() => {
-    console.log("app.js");
-    hide();
-  }, []);
+  // IF YOU WANT TO TAKE OF THE RESTRICTION OF SENDING MULTIPLE ANSWERS COMMENT THIS OUT,
+  // ALSO IF YOU HAVE SUBMITTED ONE SURVEY YOU CAN GO TO OVERLAY AND COMMENT OUT THERE THE RESTRICTION
 
   const hide = () => {
     new Date().toISOString().substring(0, 6) !==
@@ -21,7 +19,16 @@ function App() {
       ? console.log(display)
       : setDisplay("hide");
   };
+
+  useEffect(() => {
+    hide();
+  }, []);
+
   // IF YOU WANT TO TAKE OF THE RESTRICTION OF SENDING MULTIPLE ANSWERS COMMENT THIS OUT
+
+  const showSurvey = () => {
+    setDisplayOverlay("show");
+  };
 
   const submitHandler = (questionAnswers) => {
     let date;
@@ -48,14 +55,20 @@ function App() {
           "We weren't able to submit your answer. Please try again later!"
         )
       );
-    setSubmitted(true);
   };
 
   return (
     <div data-testid="App" className="App" id={display}>
-      {!submitted && <LandingPage />}
-      {!submitted && <OverLay submit={submitHandler} />}
-      {submitted && <AfterSubmit message={message} />}
+      <Routes>
+        <Route path="/" element={<LandingPage showSurvey={showSurvey} />} />
+        <Route
+          path="/survey"
+          element={
+            <OverLay submit={submitHandler} displayApp={displayOverlay} />
+          }
+        />
+        <Route path="/thankyou" element={<AfterSubmit message={message} />} />
+      </Routes>
     </div>
   );
 }
