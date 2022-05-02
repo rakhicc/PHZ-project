@@ -90,6 +90,7 @@ li {
   border-radius: 10px;
   height: 150px;
   width: 100%;
+  padding: 1vh;
 }
 
 textarea:focus {
