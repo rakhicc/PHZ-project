@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../UI/Button";
 import styles from "./AfterSubmit.module.css";
+import "../App.css";
 
 const AfterSubmit = ({ message }) => {
+  const [display, setDisplay] = useState("show");
+
+  const hide = () => {
+    setDisplay("hide");
+  };
+
   return (
-    <div className={styles.overlay}>
+    <div id={display} className={styles.overlay}>
       <div data-testid="AfterSubmit" className={styles.popup}>
         <div className={styles.allContent}>
           <h2>{message}</h2>
-          <a href="/">
-            <Button>Close</Button>
-          </a>
+          <Button submit={hide}>Close</Button>
         </div>
       </div>
     </div>
