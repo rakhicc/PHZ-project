@@ -22,6 +22,8 @@ function App() {
       feedback: questionAnswers.answer,
     };
 
+    console.log(process.env.REACT_APP_URL);
+
     fetch(process.env.REACT_APP_URL, {
       method: "POST",
       headers: { "Content-type": "application/json" },
