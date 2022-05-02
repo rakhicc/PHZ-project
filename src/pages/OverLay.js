@@ -135,6 +135,8 @@ const OverLay = ({ submit }) => {
               data-testid="answer"
               className={styles.answer}
               onChange={answerHandler}
+              maxLength="150"
+              placeholder="Maximum length of 150 characters"
             ></textarea>
           </div>
 
