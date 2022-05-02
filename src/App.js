@@ -2,11 +2,26 @@ import "./App.css";
 import LandingPage from "./pages/LandingPage";
 import OverLay from "./pages/OverLay";
 import AfterSubmit from "./pages/AfterSubmit";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [display, setDisplay] = useState("show");
   const [submitted, setSubmitted] = useState(false);
   const [message, setMessage] = useState("");
+
+  // IF YOU WANT TO TAKE OF THE RESTRICTION OF SENDING MULTIPLE ANSWERS COMMENT THIS OUT
+  useEffect(() => {
+    console.log("app.js");
+    hide();
+  }, []);
+
+  const hide = () => {
+    new Date().toISOString().substring(0, 6) !==
+    localStorage.getItem("submitDate: ").substring(0, 6)
+      ? console.log(display)
+      : setDisplay("hide");
+  };
+  // IF YOU WANT TO TAKE OF THE RESTRICTION OF SENDING MULTIPLE ANSWERS COMMENT THIS OUT
 
   const submitHandler = (questionAnswers) => {
     let date;
@@ -34,11 +49,10 @@ function App() {
         )
       );
     setSubmitted(true);
-    localStorage.setItem("submitDate: ", new Date().toISOString());
   };
 
   return (
-    <div data-testid="App" className="App">
+    <div data-testid="App" className="App" id={display}>
       {!submitted && <LandingPage />}
       {!submitted && <OverLay submit={submitHandler} />}
       {submitted && <AfterSubmit message={message} />}
