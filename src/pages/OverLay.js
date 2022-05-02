@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../UI/Button";
 import styles from "./OverLay.module.css";
 import { ReactComponent as Close } from "../assets/close-square.svg";
@@ -14,6 +14,25 @@ import { ReactComponent as Emoji9 } from "../assets/Emoji9.svg";
 import { ReactComponent as Emoji10 } from "../assets/Emoji10.svg";
 
 const OverLay = ({ submit }) => {
+  const [number, setNumber] = useState(0);
+  const [answer, setAnswer] = useState("");
+  const [select, setSelect] = useState(false);
+
+  /*useEffect(() => {
+    if (!closeDate) {
+      console.log("overlay");
+      Math.round(
+        (new Date().getTime() -
+          new Date(localStorage.getItem("closeDate: ")).getTime()) /
+          (1000 * 3600 * 24)
+      ) < 6
+        ? (window.location = "/")
+        : (window.location = "/#popup1");
+    } else {
+      console.log("toimiiko");
+    }
+  }, []);*/
+
   function Select({ user, click, status }) {
     return (
       <li className={status ? styles.active : null} onClick={click}>
@@ -75,10 +94,6 @@ const OverLay = ({ submit }) => {
     />,
   ];
 
-  const [number, setNumber] = useState(0);
-  const [answer, setAnswer] = useState("");
-  const [select, setSelect] = useState(false);
-
   const handleSelect = (key) => {
     setSelect(key);
   };
@@ -99,7 +114,12 @@ const OverLay = ({ submit }) => {
         answer,
       };
       submit(questionAnswers);
+      localStorage.removeItem("closeDate: ");
     }
+  };
+
+  const setCloseLocalStorage = () => {
+    localStorage.setItem("closeDate: ", new Date());
   };
 
   return (
@@ -109,10 +129,7 @@ const OverLay = ({ submit }) => {
           data-testid="close"
           className={styles.close}
           href="/"
-          onClick={localStorage.setItem(
-            "closeDate: ",
-            new Date().toISOString()
-          )}
+          onClick={setCloseLocalStorage}
         >
           <Close />
         </a>
