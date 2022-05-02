@@ -91,8 +91,8 @@ const OverLay = ({ submit }) => {
   const questionnaireSubmit = (e) => {
     e.preventDefault();
 
-    if(number === 0) {
-      alert("Please choose one number input")
+    if (number === 0) {
+      alert("Please choose one number input");
     } else {
       const questionAnswers = {
         number,
@@ -100,8 +100,6 @@ const OverLay = ({ submit }) => {
       };
       submit(questionAnswers);
     }
-    
-    
   };
 
   return (
@@ -114,7 +112,7 @@ const OverLay = ({ submit }) => {
         <div data-testid="allContent" className={styles.allContent}>
           <div className={styles.question}>
             <h2>
-              How likely are you to recommend us to a friend or colleague?
+              Would you recommend PHZ as employer to your friend or colleague?
             </h2>
             <h2>(1 = Not Likely, 10 = Very Likely)</h2>
           </div>
@@ -130,7 +128,7 @@ const OverLay = ({ submit }) => {
           </div>
 
           <div className={styles.question}>
-            <h2>Please provide any comments to help explain your selection.</h2>
+            <h2>Why / why not?</h2>
             <textarea
               type="text"
               id="answer"
