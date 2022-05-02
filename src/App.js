@@ -34,6 +34,7 @@ function App() {
         )
       );
     setSubmitted(true);
+    localStorage.setItem("submitDate: ", new Date().toISOString());
   };
 
   return (

@@ -105,7 +105,15 @@ const OverLay = ({ submit }) => {
   return (
     <div data-testid="popup1" id="popup1" className={styles.overlay}>
       <div className={styles.popup}>
-        <a data-testid="close" className={styles.close} href="/">
+        <a
+          data-testid="close"
+          className={styles.close}
+          href="/"
+          onClick={localStorage.setItem(
+            "closeDate: ",
+            new Date().toISOString()
+          )}
+        >
           <Close />
         </a>
 
