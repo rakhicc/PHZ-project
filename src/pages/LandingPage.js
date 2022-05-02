@@ -1,12 +1,14 @@
 import React from "react";
 import styles from "./LandingPage.module.css";
 import Button from "../UI/Button";
-const LandingPage = () => {
+import { Link } from "react-router-dom";
+
+const LandingPage = ({ showSurvey }) => {
   return (
     <div class={styles.landing}>
-      <a data-testid="LandingPage" class={styles.button} href="#popup1">
-        <Button>Click here to open the survey </Button>
-      </a>
+      <Link to="/survey" data-testid="LandingPage" class={styles.button}>
+        <Button submit={showSurvey}>Click here to open the survey </Button>
+      </Link>
     </div>
   );
 };

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Button from "../UI/Button";
 import styles from "./OverLay.module.css";
+import DayCounter from "../functions/DayCounter";
+import { Link, useNavigate } from "react-router-dom";
+import "../App.css";
 import { ReactComponent as Close } from "../assets/close-square.svg";
 import { ReactComponent as Emoji1 } from "../assets/Emoji1.svg";
 import { ReactComponent as Emoji2 } from "../assets/Emoji2.svg";
@@ -13,25 +16,26 @@ import { ReactComponent as Emoji8 } from "../assets/Emoji8.svg";
 import { ReactComponent as Emoji9 } from "../assets/Emoji9.svg";
 import { ReactComponent as Emoji10 } from "../assets/Emoji10.svg";
 
-const OverLay = ({ submit }) => {
+const OverLay = ({ submit, displayApp }) => {
   const [number, setNumber] = useState(0);
   const [answer, setAnswer] = useState("");
   const [select, setSelect] = useState(false);
+  const [display, setDisplay] = useState(displayApp);
 
-  /*useEffect(() => {
-    if (!closeDate) {
-      console.log("overlay");
-      Math.round(
-        (new Date().getTime() -
-          new Date(localStorage.getItem("closeDate: ")).getTime()) /
-          (1000 * 3600 * 24)
-      ) < 6
-        ? (window.location = "/")
-        : (window.location = "/#popup1");
+  let navigate = useNavigate();
+  let closed = localStorage.getItem("closeDate: ");
+
+  // COMMENT THIS OUT IF YOU DONT WANT TO HAVE THE SURVEY CLOSED BUTTON RESTRICTION ON (7days)
+  useEffect(() => {
+    const howManyDays = DayCounter(closed);
+    if (howManyDays < 6 && displayApp !== "show") {
+      setDisplay("hide");
+      navigate("/");
     } else {
-      console.log("toimiiko");
+      setDisplay("show");
     }
-  }, []);*/
+  }, []);
+  // COMMENT THIS OUT IF YOU DONT WANT TO HAVE THE SURVEY CLOSED BUTTON RESTRICTION ON (7days)
 
   function Select({ user, click, status }) {
     return (
@@ -105,7 +109,6 @@ const OverLay = ({ submit }) => {
 
   const questionnaireSubmit = (e) => {
     e.preventDefault();
-
     if (number === 0) {
       alert("Please choose one number input");
     } else {
@@ -115,6 +118,7 @@ const OverLay = ({ submit }) => {
       };
       submit(questionAnswers);
       localStorage.removeItem("closeDate: ");
+      navigate("/thankyou");
     }
   };
 
@@ -123,49 +127,51 @@ const OverLay = ({ submit }) => {
   };
 
   return (
-    <div data-testid="popup1" id="popup1" className={styles.overlay}>
-      <div className={styles.popup}>
-        <a
-          data-testid="close"
-          className={styles.close}
-          href="/"
-          onClick={setCloseLocalStorage}
-        >
-          <Close />
-        </a>
+    <div id={display}>
+      <div data-testid="popup1" className={styles.overlay}>
+        <div className={styles.popup}>
+          <Link
+            to="/"
+            data-testid="close"
+            className={styles.close}
+            href="/"
+            onClick={setCloseLocalStorage}
+          >
+            <Close />
+          </Link>
 
-        <div data-testid="allContent" className={styles.allContent}>
-          <div className={styles.question}>
-            <h2>
-              Would you recommend PHZ as employer to your friend or colleague?
-            </h2>
-            <h2>(1 = Not Likely, 10 = Very Likely)</h2>
-          </div>
-          <div className={styles.content}>
-            {scores.map((score, key) => (
-              <Select
-                key={key}
-                status={select === key}
-                click={() => handleSelect(key)}
-                user={score}
-              />
-            ))}
-          </div>
+          <div data-testid="allContent" className={styles.allContent}>
+            <div className={styles.question}>
+              <h2>
+                Would you recommend PHZ as employer to your friend or colleague?
+              </h2>
+              <h2>(1 = Not Likely, 10 = Very Likely)</h2>
+            </div>
+            <div className={styles.content}>
+              {scores.map((score, key) => (
+                <Select
+                  key={key}
+                  status={select === key}
+                  click={() => handleSelect(key)}
+                  user={score}
+                />
+              ))}
+            </div>
 
-          <div className={styles.question}>
-            <h2>Why / why not?</h2>
-            <textarea
-              type="text"
-              id="answer"
-              data-testid="answer"
-              className={styles.answer}
-              onChange={answerHandler}
-              maxLength="150"
-              placeholder="Maximum length of 150 characters"
-            ></textarea>
+            <div className={styles.question}>
+              <h2>Why / why not?</h2>
+              <textarea
+                type="text"
+                id="answer"
+                data-testid="answer"
+                className={styles.answer}
+                onChange={answerHandler}
+                maxLength="150"
+                placeholder="Maximum length of 150 characters"
+              ></textarea>
+            </div>
+            <Button submit={questionnaireSubmit}>Submit</Button>
           </div>
-
-          <Button submit={questionnaireSubmit}>Submit</Button>
         </div>
       </div>
     </div>

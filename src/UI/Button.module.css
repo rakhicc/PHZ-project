@@ -1,15 +1,17 @@
-
 .button {
-  
-  background: #D47E36;
-  border-radius: 7px ;
+  background: #d47e36;
+  border-radius: 7px;
   border: none;
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 0.5rem 1rem;
   cursor: pointer;
   margin: 1rem;
-  }
+}
 
-  .button:hover {
-    background: #c76414;
-  }
+.button:hover {
+  background: #c76414;
+}
+
+.link {
+  height: 5vh;
+}
