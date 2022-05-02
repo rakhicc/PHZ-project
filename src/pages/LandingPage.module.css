@@ -1,8 +1,11 @@
 .landing {
-    margin-top: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-
+.button {
+  position: absolute;
+  right: 1vw;
+  bottom: 1vh;
+}
