@@ -8,7 +8,6 @@ const AfterSubmit = ({ message }) => {
 
   const hide = () => {
     setDisplay("hide");
-    localStorage.setItem("submitDate: ", new Date().toISOString());
   };
 
   return (
