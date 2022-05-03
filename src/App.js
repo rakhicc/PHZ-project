@@ -13,7 +13,7 @@ function App() {
   // IF YOU WANT TO TAKE OF THE RESTRICTION OF SENDING MULTIPLE ANSWERS COMMENT THIS OUT,
   // ALSO IF YOU HAVE SUBMITTED ONE SURVEY YOU CAN GO TO OVERLAY AND COMMENT OUT THERE THE RESTRICTION
 
-  const hide = () => {
+  /* const hide = () => {
     new Date().toISOString().substring(0, 6) !==
     localStorage.getItem("submitDate: ").substring(0, 6)
       ? console.log(display)
@@ -22,7 +22,7 @@ function App() {
 
   useEffect(() => {
     hide();
-  }, []);
+  }, []); */
 
   // IF YOU WANT TO TAKE OF THE RESTRICTION OF SENDING MULTIPLE ANSWERS COMMENT THIS OUT
 
@@ -49,7 +49,10 @@ function App() {
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(dataForBackend),
     })
-      .then(() => setMessage("Thank you for submiting you feedback!"))
+      .then(() => {
+        setMessage("Thank you for submiting you feedback!");
+        localStorage.setItem("submitDate: ", new Date().toISOString());
+      })
       .catch(() =>
         setMessage(
           "We weren't able to submit your answer. Please try again later!"
