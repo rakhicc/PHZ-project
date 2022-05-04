@@ -8,6 +8,13 @@ const AfterSubmit = ({ message }) => {
 
   const hide = () => {
     setDisplay("hide");
+    window.parent.postMessage(
+      {
+        type: "submit",
+        message: "submitted",
+      },
+      document.location.ancestorOrigins[0]
+    );
   };
 
   return (

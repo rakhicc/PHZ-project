@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 
 const LandingPage = ({ showSurvey }) => {
   return (
-    <div class={styles.landing}>
+    <div>
       <Link to="/survey" data-testid="LandingPage" class={styles.button}>
-        <Button submit={showSurvey}>Click here to open the survey </Button>
+        <Button submit={showSurvey}>
+          Click here to answer to the survey!{" "}
+        </Button>
       </Link>
     </div>
   );

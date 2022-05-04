@@ -26,7 +26,7 @@ const OverLay = ({ submit, displayApp }) => {
   let closed = localStorage.getItem("closeDate: ");
 
   // COMMENT THIS OUT IF YOU DONT WANT TO HAVE THE SURVEY CLOSED BUTTON RESTRICTION ON (7days)
-  useEffect(() => {
+  /*useEffect(() => {
     const howManyDays = DayCounter(closed);
     if (howManyDays < 6 && displayApp !== "show") {
       setDisplay("hide");
@@ -34,7 +34,7 @@ const OverLay = ({ submit, displayApp }) => {
     } else {
       setDisplay("show");
     }
-  }, []);
+  }, []); */
   // COMMENT THIS OUT IF YOU DONT WANT TO HAVE THE SURVEY CLOSED BUTTON RESTRICTION ON (7days)
 
   function Select({ user, click, status }) {
@@ -124,6 +124,13 @@ const OverLay = ({ submit, displayApp }) => {
 
   const setCloseLocalStorage = () => {
     localStorage.setItem("closeDate: ", new Date());
+    window.parent.postMessage(
+      {
+        type: "close",
+        message: "closed",
+      },
+      document.location.ancestorOrigins[0]
+    );
   };
 
   return (
