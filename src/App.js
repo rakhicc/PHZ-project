@@ -28,6 +28,13 @@ function App() {
 
   const showSurvey = () => {
     setDisplayOverlay("show");
+    window.parent.postMessage(
+      {
+        type: "open",
+        message: "open",
+      },
+      document.location.ancestorOrigins[0]
+    );
   };
 
   const submitHandler = (questionAnswers) => {
