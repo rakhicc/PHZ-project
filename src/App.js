@@ -3,31 +3,60 @@ import LandingPage from "./pages/LandingPage";
 import OverLay from "./pages/OverLay";
 import AfterSubmit from "./pages/AfterSubmit";
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 function App() {
   const [display, setDisplay] = useState("show");
-  const [displayOverlay, setDisplayOverlay] = useState();
   const [message, setMessage] = useState("");
+  const [openSurvey, setOpenSurvey] = useState("");
 
+  let navigate = useNavigate();
   // IF YOU WANT TO TAKE OF THE RESTRICTION OF SENDING MULTIPLE ANSWERS COMMENT THIS OUT,
   // ALSO IF YOU HAVE SUBMITTED ONE SURVEY YOU CAN GO TO OVERLAY AND COMMENT OUT THERE THE RESTRICTION
 
-  /* const hide = () => {
-    new Date().toISOString().substring(0, 6) !==
-    localStorage.getItem("submitDate: ").substring(0, 6)
-      ? console.log(display)
-      : setDisplay("hide");
+  const hide = () => {
+    console.log(new Date().toISOString().substring(0, 16));
+    if (!localStorage.getItem("submitDate: ")) {
+      console.log("show all");
+      if (!localStorage.getItem("closeDate: ")) {
+      } else {
+        setDisplay("show");
+        window.parent.postMessage(
+          {
+            type: "closed",
+            message: "closed",
+          },
+          document.location.ancestorOrigins[0]
+        );
+      }
+    } else {
+      if (
+        new Date().toISOString().substring(0, 16) !==
+        localStorage.getItem("submitDate: ").substring(0, 16)
+      ) {
+        // navigate("/survey");
+        setDisplay("show");
+      } else {
+        setDisplay("hide");
+        window.parent.postMessage(
+          {
+            type: "submit",
+            message: "submitted",
+          },
+          document.location.ancestorOrigins[0]
+        );
+      }
+    }
+    console.log(display);
   };
 
   useEffect(() => {
     hide();
-  }, []); */
+  }, []);
 
   // IF YOU WANT TO TAKE OF THE RESTRICTION OF SENDING MULTIPLE ANSWERS COMMENT THIS OUT
 
   const showSurvey = () => {
-    setDisplayOverlay("show");
     window.parent.postMessage(
       {
         type: "open",
@@ -35,6 +64,8 @@ function App() {
       },
       document.location.ancestorOrigins[0]
     );
+    navigate("/survey");
+    setOpenSurvey("open");
   };
 
   const submitHandler = (questionAnswers) => {
@@ -73,9 +104,7 @@ function App() {
         <Route path="/" element={<LandingPage showSurvey={showSurvey} />} />
         <Route
           path="/survey"
-          element={
-            <OverLay submit={submitHandler} displayApp={displayOverlay} />
-          }
+          element={<OverLay submit={submitHandler} clickedOpen={openSurvey} />}
         />
         <Route path="/thankyou" element={<AfterSubmit message={message} />} />
       </Routes>

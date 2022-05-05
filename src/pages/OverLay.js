@@ -16,25 +16,44 @@ import { ReactComponent as Emoji8 } from "../assets/Emoji8.svg";
 import { ReactComponent as Emoji9 } from "../assets/Emoji9.svg";
 import { ReactComponent as Emoji10 } from "../assets/Emoji10.svg";
 
-const OverLay = ({ submit, displayApp }) => {
+const OverLay = ({ submit, clickedOpen }) => {
   const [number, setNumber] = useState(0);
   const [answer, setAnswer] = useState("");
   const [select, setSelect] = useState(false);
-  const [display, setDisplay] = useState(displayApp);
+  const [display, setDisplay] = useState();
 
   let navigate = useNavigate();
   let closed = localStorage.getItem("closeDate: ");
 
   // COMMENT THIS OUT IF YOU DONT WANT TO HAVE THE SURVEY CLOSED BUTTON RESTRICTION ON (7days)
-  /*useEffect(() => {
-    const howManyDays = DayCounter(closed);
-    if (howManyDays < 6 && displayApp !== "show") {
-      setDisplay("hide");
-      navigate("/");
-    } else {
+  useEffect(() => {
+    if (clickedOpen === "open") {
       setDisplay("show");
+      window.parent.postMessage(
+        {
+          type: "open",
+          message: "open",
+        },
+        document.location.ancestorOrigins[0]
+      );
+    } else {
+      const howManyDays = DayCounter(closed);
+      if (howManyDays < 6) {
+        console.log("hide");
+        setDisplay("hide");
+        navigate("/");
+      } else {
+        setDisplay("show");
+        window.parent.postMessage(
+          {
+            type: "open",
+            message: "open",
+          },
+          document.location.ancestorOrigins[0]
+        );
+      }
     }
-  }, []); */
+  }, []);
   // COMMENT THIS OUT IF YOU DONT WANT TO HAVE THE SURVEY CLOSED BUTTON RESTRICTION ON (7days)
 
   function Select({ user, click, status }) {
@@ -131,6 +150,7 @@ const OverLay = ({ submit, displayApp }) => {
       },
       document.location.ancestorOrigins[0]
     );
+    navigate("/");
   };
 
   return (
