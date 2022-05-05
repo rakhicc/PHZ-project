@@ -15,7 +15,6 @@ function App() {
   // ALSO IF YOU HAVE SUBMITTED ONE SURVEY YOU CAN GO TO OVERLAY AND COMMENT OUT THERE THE RESTRICTION
 
   const hide = () => {
-    console.log(new Date().toISOString().substring(0, 16));
     if (!localStorage.getItem("submitDate: ")) {
       console.log("show all");
       if (!localStorage.getItem("closeDate: ")) {
@@ -31,8 +30,8 @@ function App() {
       }
     } else {
       if (
-        new Date().toISOString().substring(0, 16) !==
-        localStorage.getItem("submitDate: ").substring(0, 16)
+        new Date().toISOString().substring(0, 7) !==
+        localStorage.getItem("submitDate: ").substring(0, 7)
       ) {
         // navigate("/survey");
         setDisplay("show");
@@ -47,7 +46,6 @@ function App() {
         );
       }
     }
-    console.log(display);
   };
 
   useEffect(() => {
