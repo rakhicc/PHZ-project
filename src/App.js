@@ -74,7 +74,7 @@ function App() {
       : (date = new Date().toISOString().substring(0, 10));
 
     const dataForBackend = {
-      id: Number(String(new Date().valueOf()).substring(0, 5)),
+      id: Number(String(new Date().valueOf()).substring(0, 9)),
       date: date,
       score: questionAnswers.number,
       feedback: questionAnswers.answer,
