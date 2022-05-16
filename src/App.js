@@ -11,8 +11,6 @@ function App() {
   const [openSurvey, setOpenSurvey] = useState("");
 
   let navigate = useNavigate();
-  // IF YOU WANT TO TAKE OF THE RESTRICTION OF SENDING MULTIPLE ANSWERS COMMENT THIS OUT,
-  // ALSO IF YOU HAVE SUBMITTED ONE SURVEY YOU CAN GO TO OVERLAY AND COMMENT OUT THERE THE RESTRICTION
 
   const hide = () => {
     if (!localStorage.getItem("submitDate: ")) {
@@ -33,7 +31,6 @@ function App() {
         new Date().toISOString().substring(0, 7) !==
         localStorage.getItem("submitDate: ").substring(0, 7)
       ) {
-        // navigate("/survey");
         setDisplay("show");
       } else {
         setDisplay("hide");
@@ -49,10 +46,8 @@ function App() {
   };
 
   useEffect(() => {
-    hide();
+    hide(); // IF YOU WANT TO TAKE OF THE RESTRICTION OF SENDING MULTIPLE ANSWERS COMMENT THIS OUT
   }, []);
-
-  // IF YOU WANT TO TAKE OF THE RESTRICTION OF SENDING MULTIPLE ANSWERS COMMENT THIS OUT
 
   const showSurvey = () => {
     window.parent.postMessage(
@@ -80,22 +75,24 @@ function App() {
       feedback: questionAnswers.answer,
     };
 
-    console.log(dataForBackend);
-
-    fetch(process.env.REACT_APP_URL, {
-      method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(dataForBackend),
-    })
-      .then(() => {
-        setMessage("Thank you for submiting you feedback!");
-        localStorage.setItem("submitDate: ", new Date().toISOString());
-      })
-      .catch(() =>
-        setMessage(
+    !process.env.REACT_APP_URL
+      ? setMessage(
           "We weren't able to submit your answer. Please try again later!"
         )
-      );
+      : fetch(process.env.REACT_APP_URL, {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(dataForBackend),
+        })
+          .then(() => {
+            setMessage("Thank you for submiting you feedback!");
+            localStorage.setItem("submitDate: ", new Date().toISOString());
+          })
+          .catch(() =>
+            setMessage(
+              "We weren't able to submit your answer. Please try again later!"
+            )
+          );
   };
 
   return (
