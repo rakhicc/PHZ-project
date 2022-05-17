@@ -90,6 +90,10 @@ In the environmental variables you should have key REACT_APP_URL and as an value
 
 - `http://backendURL/api/npsdata`
 
+### 5.2 Hosted
+
+https://phz-survey.herokuapp.com/
+
 ## 6. Problems
 
 - After clicking X button from the survey the iFrame height and width should be smaller
@@ -102,3 +106,12 @@ In the environmental variables you should have key REACT_APP_URL and as an value
 
 Add here TODO and blockers that you have found related to upgrading to newer versions.
 List the library/framework/service, version, and then the error message.
+
+## Screenshots
+
+![Screenshot of the desktop view survey](./screenshots/desktopsurvey.png)
+![Screenshot of the desktop view back to the survey button](./screenshots/desktopbutton.png)
+![Screenshot of the desktop view thank you message/error message](./screenshots/desktopmessage.png)
+![Screenshot of the mobile view survey](./screenshots/mobilesurvey.jpg)
+![Screenshot of the mobile view back to the survey button](./screenshots/mobilebutton.jpg)
+![Screenshot of the mobile view thank you message/error message](./screenshots/mobilemessage.jpg)
