@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const LandingPage = ({ showSurvey }) => {
   return (
     <div>
-      <Link to="/survey" data-testid="LandingPage" class={styles.button}>
+      <Link to="/survey" data-testid="LandingPage" className={styles.button}>
         <Button submit={showSurvey}>
           Click here to answer to the survey!{" "}
         </Button>
