@@ -90,7 +90,7 @@ In the environmental variables you should have key REACT_APP_URL and as an value
 
 - `http://backendURL/api/npsdata`
 
-### 5.2 Hosted
+### 5.2. Hosted
 
 https://phz-survey.herokuapp.com/
 
