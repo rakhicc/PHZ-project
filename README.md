@@ -77,7 +77,7 @@ After pulling the newest code from Git.
 
 - npm test
 
-### 5. Deployment
+## 5. Deployment
 
 ### 5.1. Prerequisites
 
