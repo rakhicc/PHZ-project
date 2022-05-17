@@ -43,10 +43,6 @@ Coding languages/frameworks/testing
 - CSS
 - Jest
 
-CI
-
-- Jenkins
-
 Production
 
 - Heroku --> can be deployed many other ways too
