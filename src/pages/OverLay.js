@@ -32,14 +32,25 @@ const OverLay = ({ submit, clickedOpen }) => {
       window.parent.postMessage(
         {
           type: "open",
-          message: "open",
+          message: {
+            bodyHeight: "100vh",
+            bodyPosition: "absolute",
+            bodyTop: "0px",
+            bodyLeft: "0px",
+            iFrameHeight: "100vh",
+            width: "100vw",
+            top: "unset",
+            left: "0vw",
+            bottom: "0px",
+            display: "unset",
+            border: "10px",
+          },
         },
         document.location.ancestorOrigins[0]
       );
     } else {
       const howManyDays = DayCounter(closed);
       if (howManyDays < 6) {
-        console.log("hide");
         setDisplay("hide");
         navigate("/");
       } else {
@@ -47,7 +58,19 @@ const OverLay = ({ submit, clickedOpen }) => {
         window.parent.postMessage(
           {
             type: "open",
-            message: "open",
+            message: {
+              bodyHeight: "100vh",
+              bodyPosition: "absolute",
+              bodyTop: "0px",
+              bodyLeft: "0px",
+              iFrameHeight: "100vh",
+              width: "100vw",
+              top: "unset",
+              left: "0vw",
+              bottom: "0px",
+              display: "unset",
+              border: "10px",
+            },
           },
           document.location.ancestorOrigins[0]
         );
@@ -145,8 +168,20 @@ const OverLay = ({ submit, clickedOpen }) => {
     localStorage.setItem("closeDate: ", new Date());
     window.parent.postMessage(
       {
-        type: "close",
-        message: "closed",
+        type: "closed",
+        message: {
+          bodyHeight: "6.5vh",
+          bodyPosition: "absolute",
+          bodyTop: "90vh",
+          bodyLeft: "2vw",
+          iFrameHeight: "6.5vh",
+          width: "16vw",
+          top: "unset",
+          left: "0vw",
+          bottom: "0px",
+          display: "unset",
+          border: "10px",
+        },
       },
       document.location.ancestorOrigins[0]
     );

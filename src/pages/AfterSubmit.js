@@ -15,7 +15,9 @@ const AfterSubmit = ({ message }) => {
       window.parent.postMessage(
         {
           type: "submit",
-          message: "submitted",
+          message: {
+            display: "none",
+          },
         },
         document.location.ancestorOrigins[0]
       );

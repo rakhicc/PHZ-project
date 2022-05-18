@@ -14,14 +14,27 @@ function App() {
 
   const hide = () => {
     if (!localStorage.getItem("submitDate: ")) {
-      console.log("show all");
+      console.log("no submit date");
       if (!localStorage.getItem("closeDate: ")) {
+        console.log("no close date");
       } else {
         setDisplay("show");
         window.parent.postMessage(
           {
             type: "closed",
-            message: "closed",
+            message: {
+              bodyHeight: "6.5vh",
+              bodyPosition: "absolute",
+              bodyTop: "90vh",
+              bodyLeft: "2vw",
+              iFrameHeight: "6.5vh",
+              width: "16vw",
+              top: "unset",
+              left: "0vw",
+              bottom: "0px",
+              display: "unset",
+              border: "10px",
+            },
           },
           document.location.ancestorOrigins[0]
         );
@@ -36,8 +49,20 @@ function App() {
         setDisplay("hide");
         window.parent.postMessage(
           {
-            type: "submit",
-            message: "submitted",
+            type: "open",
+            message: {
+              bodyHeight: "100vh",
+              bodyPosition: "absolute",
+              bodyTop: "0px",
+              bodyLeft: "0px",
+              iFrameHeight: "100vh",
+              width: "100vw",
+              top: "unset",
+              left: "0vw",
+              bottom: "0px",
+              display: "unset",
+              border: "10px",
+            },
           },
           document.location.ancestorOrigins[0]
         );
@@ -53,7 +78,19 @@ function App() {
     window.parent.postMessage(
       {
         type: "open",
-        message: "open",
+        message: {
+          bodyHeight: "100vh",
+          bodyPosition: "absolute",
+          bodyTop: "0px",
+          bodyLeft: "0px",
+          iFrameHeight: "100vh",
+          width: "100vw",
+          top: "unset",
+          left: "0vw",
+          bottom: "0px",
+          display: "unset",
+          border: "10px",
+        },
       },
       document.location.ancestorOrigins[0]
     );
