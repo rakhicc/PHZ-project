@@ -49,33 +49,168 @@ const OverLay = ({ submit, clickedOpen }) => {
         document.location.ancestorOrigins[0]
       );
     } else {
+      
       const howManyDays = DayCounter(closed);
+      if (howManyDays){
+
       if (howManyDays < 6) {
-        setDisplay("hide");
-        navigate("/");
+        console.log("how many days")
+      
+      setDisplay("hide");
+      
+      navigate("/");
+      
       } else {
+      
+      if (localStorage.getItem("submitDate: ")) {
+        console.log("is this showing")
+      
+      if (
+      
+      new Date().toISOString().substring(0, 7) !==
+      
+      localStorage.getItem("submitDate: ").substring(0, 7)
+      
+      ) {
+      
+      setDisplay("show");
+      
+      window.parent.postMessage(
+      
+      {
+      
+      type: "open",
+      
+      message: {
+      
+      bodyHeight: "100vh",
+      
+      bodyPosition: "absolute",
+      
+      bodyTop: "0px",
+      
+      bodyLeft: "0px",
+      
+      iFrameHeight: "100vh",
+      
+      width: "100vw",
+      
+      top: "unset",
+      
+      left: "0vw",
+      
+      bottom: "0px",
+      
+      display: "unset",
+      
+      border: "10px",
+      
+      },
+      
+      },
+      
+      document.location.ancestorOrigins[0]
+      
+      );
+      
+      } else {
+      console.log("line 116")
+      setDisplay("hide");
+      
+      navigate("/");
+      
+      }
+      
+      } else {
+
         setDisplay("show");
+        
         window.parent.postMessage(
-          {
-            type: "open",
-            message: {
-              bodyHeight: "100vh",
-              bodyPosition: "absolute",
-              bodyTop: "0px",
-              bodyLeft: "0px",
-              iFrameHeight: "100vh",
-              width: "100vw",
-              top: "unset",
-              left: "0vw",
-              bottom: "0px",
-              display: "unset",
-              border: "10px",
-            },
-          },
-          document.location.ancestorOrigins[0]
+        
+        {
+        
+        type: "open",
+        
+        message: {
+        
+        bodyHeight: "100vh",
+        
+        bodyPosition: "absolute",
+        
+        bodyTop: "0px",
+        
+        bodyLeft: "0px",
+        
+        iFrameHeight: "100vh",
+        
+        width: "100vw",
+        
+        top: "unset",
+        
+        left: "0vw",
+        
+        bottom: "0px",
+        
+        display: "unset",
+        
+        border: "10px",
+        
+        },
+        
+        },
+        
+        document.location.ancestorOrigins[0]
+        
         );
+        
+        }
+      
       }
     }
+    else {
+
+      setDisplay("show");
+      
+      window.parent.postMessage(
+      
+      {
+      
+      type: "open",
+      
+      message: {
+      
+      bodyHeight: "100vh",
+      
+      bodyPosition: "absolute",
+      
+      bodyTop: "0px",
+      
+      bodyLeft: "0px",
+      
+      iFrameHeight: "100vh",
+      
+      width: "100vw",
+      
+      top: "unset",
+      
+      left: "0vw",
+      
+      bottom: "0px",
+      
+      display: "unset",
+      
+      border: "10px",
+      
+      },
+      
+      },
+      
+      document.location.ancestorOrigins[0]
+      
+      );
+      
+      }
+      }
   }, []);
   // COMMENT THIS OUT IF YOU DONT WANT TO HAVE THE SURVEY CLOSED BUTTON RESTRICTION ON (7days)
 
