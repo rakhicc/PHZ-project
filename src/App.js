@@ -33,7 +33,7 @@ function App() {
               left: "0vw",
               bottom: "0px",
               display: "unset",
-              border: "10px",
+              border: "none",
             },
           },
           document.location.ancestorOrigins[0]
