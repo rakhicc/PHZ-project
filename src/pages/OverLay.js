@@ -51,7 +51,9 @@ const OverLay = ({ submit, clickedOpen }) => {
     } else {
       
       const howManyDays = DayCounter(closed);
-      if (howManyDays){
+      console.log(howManyDays)
+      if (closed){
+        console.log("line55")
 
       if (howManyDays < 6) {
         console.log("how many days")
