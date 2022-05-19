@@ -4,7 +4,7 @@ import Button from "../UI/Button";
 import styles from "./AfterSubmit.module.css";
 import "../App.css";
 
-const AfterSubmit = ({ message }) => {
+const AfterSubmit = ({ message, getParentURL }) => {
   const [display, setDisplay] = useState("show");
 
   let navigate = useNavigate();
@@ -19,10 +19,29 @@ const AfterSubmit = ({ message }) => {
             display: "none",
           },
         },
-        document.location.ancestorOrigins[0]
+        getParentURL()
       );
     } else {
       navigate("/");
+      window.parent.postMessage(
+        {
+          type: "closed",
+          message: {
+            bodyHeight: "6.5vh",
+            bodyPosition: "absolute",
+            bodyTop: "90vh",
+            bodyLeft: "2vw",
+            iFrameHeight: "6.5vh",
+            width: "16vw",
+            top: "unset",
+            left: "0vw",
+            bottom: "0px",
+            display: "unset",
+            border: "none",
+          },
+        },
+        getParentURL()
+      );
     }
   };
 

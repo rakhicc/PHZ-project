@@ -16,7 +16,7 @@ import { ReactComponent as Emoji8 } from "../assets/Emoji8.svg";
 import { ReactComponent as Emoji9 } from "../assets/Emoji9.svg";
 import { ReactComponent as Emoji10 } from "../assets/Emoji10.svg";
 
-const OverLay = ({ submit, clickedOpen }) => {
+const OverLay = ({ submit, clickedOpen, getPURL }) => {
   const [number, setNumber] = useState(0);
   const [answer, setAnswer] = useState("");
   const [select, setSelect] = useState(false);
@@ -46,173 +46,95 @@ const OverLay = ({ submit, clickedOpen }) => {
             border: "10px",
           },
         },
-        document.location.ancestorOrigins[0]
+        getPURL()
       );
     } else {
-      
       const howManyDays = DayCounter(closed);
-      console.log(howManyDays)
-      if (closed){
-        console.log("line55")
+      if (closed) {
+        if (howManyDays < 6) {
+          console.log("how many days");
+          setDisplay("hide");
+          navigate("/");
+        } else {
+          if (localStorage.getItem("submitDate: ")) {
+            if (
+              new Date().toISOString().substring(0, 7) !==
+              localStorage.getItem("submitDate: ").substring(0, 7)
+            ) {
+              setDisplay("show");
 
-      if (howManyDays < 6) {
-        console.log("how many days")
-      
-      setDisplay("hide");
-      
-      navigate("/");
-      
-      } else {
-      
-      if (localStorage.getItem("submitDate: ")) {
-        console.log("is this showing")
-      
-      if (
-      
-      new Date().toISOString().substring(0, 7) !==
-      
-      localStorage.getItem("submitDate: ").substring(0, 7)
-      
-      ) {
-      
-      setDisplay("show");
-      
-      window.parent.postMessage(
-      
-      {
-      
-      type: "open",
-      
-      message: {
-      
-      bodyHeight: "100vh",
-      
-      bodyPosition: "absolute",
-      
-      bodyTop: "0px",
-      
-      bodyLeft: "0px",
-      
-      iFrameHeight: "100vh",
-      
-      width: "100vw",
-      
-      top: "unset",
-      
-      left: "0vw",
-      
-      bottom: "0px",
-      
-      display: "unset",
-      
-      border: "10px",
-      
-      },
-      
-      },
-      
-      document.location.ancestorOrigins[0]
-      
-      );
-      
-      } else {
-      console.log("line 116")
-      setDisplay("hide");
-      
-      navigate("/");
-      
-      }
-      
-      } else {
+              window.parent.postMessage(
+                {
+                  type: "open",
 
-        setDisplay("show");
-        
-        window.parent.postMessage(
-        
-        {
-        
-        type: "open",
-        
-        message: {
-        
-        bodyHeight: "100vh",
-        
-        bodyPosition: "absolute",
-        
-        bodyTop: "0px",
-        
-        bodyLeft: "0px",
-        
-        iFrameHeight: "100vh",
-        
-        width: "100vw",
-        
-        top: "unset",
-        
-        left: "0vw",
-        
-        bottom: "0px",
-        
-        display: "unset",
-        
-        border: "10px",
-        
-        },
-        
-        },
-        
-        document.location.ancestorOrigins[0]
-        
-        );
-        
+                  message: {
+                    bodyHeight: "100vh",
+                    bodyPosition: "absolute",
+                    bodyTop: "0px",
+                    bodyLeft: "0px",
+                    iFrameHeight: "100vh",
+                    width: "100vw",
+                    top: "unset",
+                    left: "0vw",
+                    bottom: "0px",
+                    display: "unset",
+                    border: "10px",
+                  },
+                },
+                getPURL()
+              );
+            } else {
+              setDisplay("hide");
+              navigate("/");
+            }
+          } else {
+            setDisplay("show");
+
+            window.parent.postMessage(
+              {
+                type: "open",
+                message: {
+                  bodyHeight: "100vh",
+                  bodyPosition: "absolute",
+                  bodyTop: "0px",
+                  bodyLeft: "0px",
+                  iFrameHeight: "100vh",
+                  width: "100vw",
+                  top: "unset",
+                  left: "0vw",
+                  bottom: "0px",
+                  display: "unset",
+                  border: "10px",
+                },
+              },
+              getPURL()
+            );
+          }
         }
-      
+      } else {
+        setDisplay("show");
+
+        window.parent.postMessage(
+          {
+            type: "open",
+            message: {
+              bodyHeight: "100vh",
+              bodyPosition: "absolute",
+              bodyTop: "0px",
+              bodyLeft: "0px",
+              iFrameHeight: "100vh",
+              width: "100vw",
+              top: "unset",
+              left: "0vw",
+              bottom: "0px",
+              display: "unset",
+              border: "10px",
+            },
+          },
+          getPURL()
+        );
       }
     }
-    else {
-
-      setDisplay("show");
-      
-      window.parent.postMessage(
-      
-      {
-      
-      type: "open",
-      
-      message: {
-      
-      bodyHeight: "100vh",
-      
-      bodyPosition: "absolute",
-      
-      bodyTop: "0px",
-      
-      bodyLeft: "0px",
-      
-      iFrameHeight: "100vh",
-      
-      width: "100vw",
-      
-      top: "unset",
-      
-      left: "0vw",
-      
-      bottom: "0px",
-      
-      display: "unset",
-      
-      border: "10px",
-      
-      },
-      
-      },
-      
-      document.location.ancestorOrigins[0]
-      
-      );
-      
-      }
-      }
   }, []);
   // COMMENT THIS OUT IF YOU DONT WANT TO HAVE THE SURVEY CLOSED BUTTON RESTRICTION ON (7days)
 
@@ -320,7 +242,7 @@ const OverLay = ({ submit, clickedOpen }) => {
           border: "none",
         },
       },
-      document.location.ancestorOrigins[0]
+      getPURL()
     );
     navigate("/");
   };
