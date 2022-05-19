@@ -16,7 +16,7 @@ function App() {
     if (!localStorage.getItem("submitDate: ")) {
       console.log("no submit date");
       if (!localStorage.getItem("closeDate: ")) {
-        console.log("no close date");
+        navigate("/survey");
       } else {
         setDisplay("show");
         window.parent.postMessage(
@@ -48,24 +48,22 @@ function App() {
       } else {
         setDisplay("hide");
         window.parent.postMessage(
+
           {
-            type: "open",
-            message: {
-              bodyHeight: "100vh",
-              bodyPosition: "absolute",
-              bodyTop: "0px",
-              bodyLeft: "0px",
-              iFrameHeight: "100vh",
-              width: "100vw",
-              top: "unset",
-              left: "0vw",
-              bottom: "0px",
-              display: "unset",
-              border: "10px",
-            },
+          
+          type: "submit",
+          
+          message: {
+          
+          display: "none",
+          
           },
+          
+          },
+          
           document.location.ancestorOrigins[0]
-        );
+          
+          );
       }
     }
   };

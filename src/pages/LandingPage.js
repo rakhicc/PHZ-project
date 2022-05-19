@@ -7,7 +7,7 @@ const LandingPage = ({ showSurvey }) => {
     <div>
       <Link to="/survey" data-testid="LandingPage">
         <Button submit={showSurvey}>
-          Click here to answer to the survey!{" "}
+          Click here to answer the survey!{" "}
         </Button>
       </Link>
     </div>
