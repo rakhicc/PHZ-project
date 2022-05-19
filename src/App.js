@@ -11,10 +11,14 @@ function App() {
   const [openSurvey, setOpenSurvey] = useState("");
 
   let navigate = useNavigate();
+  let parentURL = "";
+
+  const getParentURL = () => {
+    return document.referrer;
+  };
 
   const hide = () => {
     if (!localStorage.getItem("submitDate: ")) {
-      console.log("no submit date");
       if (!localStorage.getItem("closeDate: ")) {
         navigate("/survey");
       } else {
@@ -36,7 +40,7 @@ function App() {
               border: "none",
             },
           },
-          document.location.ancestorOrigins[0]
+          getParentURL()
         );
       }
     } else {
@@ -48,22 +52,16 @@ function App() {
       } else {
         setDisplay("hide");
         window.parent.postMessage(
-
           {
-          
-          type: "submit",
-          
-          message: {
-          
-          display: "none",
-          
+            type: "submit",
+
+            message: {
+              display: "none",
+            },
           },
-          
-          },
-          
-          document.location.ancestorOrigins[0]
-          
-          );
+
+          getParentURL()
+        );
       }
     }
   };
@@ -90,7 +88,7 @@ function App() {
           border: "10px",
         },
       },
-      document.location.ancestorOrigins[0]
+      getParentURL()
     );
     navigate("/survey");
     setOpenSurvey("open");
@@ -133,12 +131,27 @@ function App() {
   return (
     <div data-testid="App" className="App" id={display}>
       <Routes>
-        <Route path="/" element={<LandingPage showSurvey={showSurvey} />} />
+        <Route
+          path="/"
+          element={<LandingPage showSurvey={showSurvey} pURL={parentURL} />}
+        />
         <Route
           path="/survey"
-          element={<OverLay submit={submitHandler} clickedOpen={openSurvey} />}
+          element={
+            <OverLay
+              submit={submitHandler}
+              clickedOpen={openSurvey}
+              getPURL={getParentURL}
+              pURL={parentURL}
+            />
+          }
         />
-        <Route path="/thankyou" element={<AfterSubmit message={message} />} />
+        <Route
+          path="/thankyou"
+          element={
+            <AfterSubmit message={message} getParentURL={getParentURL} />
+          }
+        />
       </Routes>
     </div>
   );
