@@ -29,7 +29,7 @@ Data collection for Promoter score for HR personelle in PHZ Full Stack.
 - Employees are asked a question once a month how likely are you to reccommend this company to friend or relative?
 - They can respond by choosing number between 1-10. Not likely 1 to Very likely 10
 - Based on their responses they are placed into three categories: Neutrals, Promotors and Detractors.
-- NPS Score is calculated by Subtracting the percentage of Detractors from the percentage of Promoters.
+- NPS is calculated by Subtracting the percentage of Detractors from the percentage of Promoters.
 
 [Read more!](https://www.netpromoter.com/know/)
 
