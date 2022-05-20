@@ -11,57 +11,59 @@ function App() {
   const [openSurvey, setOpenSurvey] = useState("");
 
   let navigate = useNavigate();
-  let parentURL = "";
 
   const getParentURL = () => {
     return document.referrer;
   };
 
   const hide = () => {
-    if (!localStorage.getItem("submitDate: ")) {
-      if (!localStorage.getItem("closeDate: ")) {
-        navigate("/survey");
-      } else {
-        setDisplay("show");
-        window.parent.postMessage(
-          {
-            type: "closed",
-            message: {
-              bodyHeight: "6.5vh",
-              bodyPosition: "absolute",
-              bodyTop: "90vh",
-              bodyLeft: "2vw",
-              iFrameHeight: "6.5vh",
-              width: "16vw",
-              top: "unset",
-              left: "0vw",
-              bottom: "0px",
-              display: "unset",
-              border: "none",
-            },
-          },
-          getParentURL()
-        );
-      }
-    } else {
-      if (
-        new Date().toISOString().substring(0, 7) !==
-        localStorage.getItem("submitDate: ").substring(0, 7)
-      ) {
-        setDisplay("show");
-      } else {
-        setDisplay("hide");
-        window.parent.postMessage(
-          {
-            type: "submit",
+    if (getParentURL()) {
+      if (!localStorage.getItem("submitDate: ")) {
+        if (!localStorage.getItem("closeDate: ")) {
+          navigate("/survey");
+        } else {
+          setDisplay("show");
 
-            message: {
-              display: "none",
+          window.parent.postMessage(
+            {
+              type: "closed",
+              message: {
+                bodyHeight: "6.5vh",
+                bodyPosition: "absolute",
+                bodyTop: "90vh",
+                bodyLeft: "2vw",
+                iFrameHeight: "6.5vh",
+                width: "16vw",
+                top: "unset",
+                left: "0vw",
+                bottom: "0px",
+                display: "unset",
+                border: "none",
+              },
             },
-          },
+            getParentURL()
+          );
+        }
+      } else {
+        if (
+          new Date().toISOString().substring(0, 7) !==
+          localStorage.getItem("submitDate: ").substring(0, 7)
+        ) {
+          setDisplay("show");
+        } else {
+          setDisplay("hide");
+          window.parent.postMessage(
+            {
+              type: "submit",
 
-          getParentURL()
-        );
+              message: {
+                display: "none",
+              },
+            },
+
+            getParentURL()
+          );
+        }
       }
     }
   };
@@ -133,16 +135,17 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<LandingPage showSurvey={showSurvey} pURL={parentURL} />}
+          element={<LandingPage showSurvey={showSurvey} pURL={getParentURL} />}
         />
         <Route
           path="/survey"
           element={
             <OverLay
+              data-testid="survey"
               submit={submitHandler}
               clickedOpen={openSurvey}
               getPURL={getParentURL}
-              pURL={parentURL}
+              pURL={getParentURL}
             />
           }
         />

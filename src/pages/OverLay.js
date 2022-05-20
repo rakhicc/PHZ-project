@@ -25,95 +25,10 @@ const OverLay = ({ submit, clickedOpen, getPURL }) => {
   let navigate = useNavigate();
   let closed = localStorage.getItem("closeDate: ");
 
-  // COMMENT THIS OUT IF YOU DONT WANT TO HAVE THE SURVEY CLOSED BUTTON RESTRICTION ON (7days)
   useEffect(() => {
-    if (clickedOpen === "open") {
-      setDisplay("show");
-      window.parent.postMessage(
-        {
-          type: "open",
-          message: {
-            bodyHeight: "100vh",
-            bodyPosition: "absolute",
-            bodyTop: "0px",
-            bodyLeft: "0px",
-            iFrameHeight: "100vh",
-            width: "100vw",
-            top: "unset",
-            left: "0vw",
-            bottom: "0px",
-            display: "unset",
-            border: "10px",
-          },
-        },
-        getPURL()
-      );
-    } else {
-      const howManyDays = DayCounter(closed);
-      if (closed) {
-        if (howManyDays < 6) {
-          console.log("how many days");
-          setDisplay("hide");
-          navigate("/");
-        } else {
-          if (localStorage.getItem("submitDate: ")) {
-            if (
-              new Date().toISOString().substring(0, 7) !==
-              localStorage.getItem("submitDate: ").substring(0, 7)
-            ) {
-              setDisplay("show");
-
-              window.parent.postMessage(
-                {
-                  type: "open",
-
-                  message: {
-                    bodyHeight: "100vh",
-                    bodyPosition: "absolute",
-                    bodyTop: "0px",
-                    bodyLeft: "0px",
-                    iFrameHeight: "100vh",
-                    width: "100vw",
-                    top: "unset",
-                    left: "0vw",
-                    bottom: "0px",
-                    display: "unset",
-                    border: "10px",
-                  },
-                },
-                getPURL()
-              );
-            } else {
-              setDisplay("hide");
-              navigate("/");
-            }
-          } else {
-            setDisplay("show");
-
-            window.parent.postMessage(
-              {
-                type: "open",
-                message: {
-                  bodyHeight: "100vh",
-                  bodyPosition: "absolute",
-                  bodyTop: "0px",
-                  bodyLeft: "0px",
-                  iFrameHeight: "100vh",
-                  width: "100vw",
-                  top: "unset",
-                  left: "0vw",
-                  bottom: "0px",
-                  display: "unset",
-                  border: "10px",
-                },
-              },
-              getPURL()
-            );
-          }
-        }
-      } else {
+    if (getPURL()) {
+      if (clickedOpen === "open") {
         setDisplay("show");
-
         window.parent.postMessage(
           {
             type: "open",
@@ -133,10 +48,93 @@ const OverLay = ({ submit, clickedOpen, getPURL }) => {
           },
           getPURL()
         );
+      } else {
+        const howManyDays = DayCounter(closed);
+        if (closed) {
+          if (howManyDays < 6) {
+            setDisplay("hide");
+            navigate("/");
+          } else {
+            if (localStorage.getItem("submitDate: ")) {
+              if (
+                new Date().toISOString().substring(0, 7) !==
+                localStorage.getItem("submitDate: ").substring(0, 7)
+              ) {
+                setDisplay("show");
+
+                window.parent.postMessage(
+                  {
+                    type: "open",
+
+                    message: {
+                      bodyHeight: "100vh",
+                      bodyPosition: "absolute",
+                      bodyTop: "0px",
+                      bodyLeft: "0px",
+                      iFrameHeight: "100vh",
+                      width: "100vw",
+                      top: "unset",
+                      left: "0vw",
+                      bottom: "0px",
+                      display: "unset",
+                      border: "10px",
+                    },
+                  },
+                  getPURL()
+                );
+              } else {
+                setDisplay("hide");
+                navigate("/");
+              }
+            } else {
+              setDisplay("show");
+              window.parent.postMessage(
+                {
+                  type: "open",
+                  message: {
+                    bodyHeight: "100vh",
+                    bodyPosition: "absolute",
+                    bodyTop: "0px",
+                    bodyLeft: "0px",
+                    iFrameHeight: "100vh",
+                    width: "100vw",
+                    top: "unset",
+                    left: "0vw",
+                    bottom: "0px",
+                    display: "unset",
+                    border: "10px",
+                  },
+                },
+                getPURL()
+              );
+            }
+          }
+        } else {
+          setDisplay("show");
+
+          window.parent.postMessage(
+            {
+              type: "open",
+              message: {
+                bodyHeight: "100vh",
+                bodyPosition: "absolute",
+                bodyTop: "0px",
+                bodyLeft: "0px",
+                iFrameHeight: "100vh",
+                width: "100vw",
+                top: "unset",
+                left: "0vw",
+                bottom: "0px",
+                display: "unset",
+                border: "10px",
+              },
+            },
+            getPURL()
+          );
+        }
       }
     }
   }, []);
-  // COMMENT THIS OUT IF YOU DONT WANT TO HAVE THE SURVEY CLOSED BUTTON RESTRICTION ON (7days)
 
   function Select({ user, click, status }) {
     return (

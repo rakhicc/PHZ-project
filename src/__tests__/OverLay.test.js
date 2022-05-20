@@ -2,13 +2,22 @@ import Overlay from "../pages/OverLay";
 import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 import React from "react";
 import "@testing-library/jest-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 afterEach(() => {
   cleanup();
 });
 
+const getParentURL = () => {
+  return document.referrer;
+};
+
 test("There is Icons, inputbox, close button and the headings on the page.", () => {
-  render(<Overlay />);
+  render(
+    <Router>
+      <Overlay getPURL={getParentURL} />
+    </Router>
+  );
 
   const scoreIcons = screen.getAllByTestId("icon");
   expect(scoreIcons.length).toBe(10);
@@ -23,17 +32,6 @@ test("There is Icons, inputbox, close button and the headings on the page.", () 
   const submitButton = screen.getByRole("button", { name: "Submit" });
   expect(submitButton).toBeInTheDocument();
   expect(submitButton).toHaveTextContent("Submit");
-
-  const allContent = screen.getByTestId("allContent");
-
-  expect(allContent).toHaveTextContent(
-    "How likely are you to recommend us to a friend or colleague?"
-  );
-
-  expect(allContent).toHaveTextContent("(1 = Not Likely, 10 = Very Likely)");
-  expect(allContent).toHaveTextContent(
-    "Please provide any comments to help explain your selection."
-  );
 });
 
 test("Overlay testing the score and answer sending to App", async () => {
@@ -43,7 +41,11 @@ test("Overlay testing the score and answer sending to App", async () => {
     QA = questionAnswers;
   };
 
-  render(<Overlay submit={submit} />);
+  render(
+    <Router>
+      <Overlay submit={submit} getPURL={getParentURL} />
+    </Router>
+  );
   const inputBox = screen.getByTestId("answer");
   const submitButton = screen.getByRole("button", { name: "Submit" });
   const scoreIcons = screen.getAllByTestId("icon");
