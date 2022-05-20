@@ -1,8 +1,8 @@
-# PHZ questionnaire project questionnaire widget
+# PHZ project survey widget
 
 ## 1. Project Description
 
-Business College Helsinki school project with PHZ Full Stack. Embeddable questionnaire widget with React and CSS to collect information about the employees satisfaction at the work place.
+Business College Helsinki school project with PHZ Full Stack. Embeddable survey widget with React and CSS to collect information about the employees satisfaction at the work place.
 
 ### 1.1. Business Vision
 
